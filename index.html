@@ -196,8 +196,9 @@ details p{padding:16px 18px;max-width:64ch}
 
 /* Slot */
 footer{background:var(--inkt);color:var(--wit);padding:60px 0 30px;overflow:hidden}
-.reus{font:900 10vw/1 var(--kop);white-space:nowrap;color:var(--wit);text-align:center;margin-bottom:34px;transition:color .3s}
-.reus:hover{color:var(--roze)}
+.reus{display:block;width:100%;height:auto;padding:0 3vw;margin-bottom:34px;overflow:visible}
+.reus text{font-family:var(--kop);font-weight:900;font-size:125px;fill:var(--wit);transition:fill .3s}
+.reus:hover text{fill:var(--roze)}
 footer p{max-width:75ch;font-size:16px}
 
 /* Inkomen bij scrollen */
@@ -359,7 +360,7 @@ html{scroll-behavior:auto}
 </main>
 
 <footer>
-  <div class="reus" aria-hidden="true">ATELIER NOIR</div>
+  <svg class="reus" viewBox="0 0 1000 125" aria-hidden="true"><text x="500" y="106" text-anchor="middle" textLength="990" lengthAdjust="spacingAndGlyphs">ATELIER NOIR</text></svg>
   <div class="wrap"><p>Atelier Noir is een fictief merk, gemaakt voor een schoolopdracht. Beelden zijn gemaakt met AI (Figma Weave), en teksten met hulp van Claude. Je gegevens gebruiken we alleen om je e-mails over dit project te sturen, en je kunt je altijd uitschrijven.</p></div>
 </footer>
 
@@ -429,10 +430,6 @@ var kaart=$('#kaartje'),stap=0,sc={};
 function vraag(){var q=Q[stap];kaart.innerHTML='<p class="stand">Vraag '+(stap+1)+' van '+Q.length+'</p><h3>'+q[0]+'</h3><div class="opties">'+q[1].map(function(o){return '<button type="button" data-g="'+o[1]+'">'+o[0]+'</button>'}).join('')+'</div>';$$('button',kaart).forEach(function(b){b.addEventListener('click',function(){sc[b.dataset.g]=(sc[b.dataset.g]||0)+1;stap++;stap<Q.length?vraag():einde(b.dataset.g)})})}
 function einde(l){var w=Object.keys(sc).sort(function(a,b){return sc[b]-sc[a]||(b===l)-(a===l)})[0],o=$('#geuren .beeld.'+w.toLowerCase()).cloneNode(true);kaart.innerHTML='<div class="uitslag"><div id="uB"></div><div><p class="stand">Jouw geur</p><h3 style="margin:0">'+w+'</h3><p><strong>'+U[w][0]+'</strong> '+U[w][1]+'</p><a class="knop" href="#inschrijven">Hoor het als eerste</a> <button type="button" class="wis" id="opnieuw">Opnieuw</button></div></div>';o.querySelector('img').loading='eager';$('#uB').appendChild(o);$('#opnieuw').addEventListener('click',function(){stap=0;sc={};vraag()})}
 vraag();
-
-/* Footertitel past altijd op de breedte */
-var reus=$('.reus');function pasReus(){var b=reus.parentElement.clientWidth*.94,sp=document.createElement('span');sp.textContent=reus.textContent;reus.textContent='';reus.appendChild(sp);reus.style.fontSize='100px';var w=sp.getBoundingClientRect().width;reus.style.fontSize=(100*b/w)+'px';reus.textContent=sp.textContent}
-pasReus();addEventListener('resize',pasReus);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(pasReus);
 
 /* Werktafel */
 var z=5,kaarten=$$('#stapel .beeld');
