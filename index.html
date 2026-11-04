@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier Noir | Parfum als statement</title>
-<meta name="description" content="Atelier Noir is een nieuw parfumatelier voor kunstenaars en makers. Schrijf je in en hoor het als eerste.">
+<meta name="description" content="Atelier Noir is een fictief parfumatelier voor kunstenaars en makers. Verf de pagina vol, maak je eigen poster, ontdek jouw geur en schrijf je in.">
+<meta name="theme-color" content="#2F6A4D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,900&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 <!-- MailerLite Universal -->
@@ -16,118 +17,425 @@ n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
 ml('account', '2746821');
 </script>
 <!-- End MailerLite Universal -->
+<script>document.documentElement.classList.add('js')</script>
 <style>
-:root{--groen:#2F6A4D;--inkt:#141414;--wit:#fff;--roze:#FF3D8B;--geel:#FFD400;--kop:'Bodoni Moda',Georgia,serif;--tekst:'DM Sans',Arial,sans-serif}
+:root{--groen:#2F6A4D;--donker:#1F4F39;--inkt:#141414;--wit:#fff;--creme:#F6F1E4;--roze:#FF3D8B;--geel:#FFD400;--cyaan:#19B5E8;--oranje:#FF8A00;--paars:#8A3FFC;--lime:#C6E000;--kop:'Bodoni Moda',Georgia,serif;--tekst:'DM Sans',Arial,sans-serif}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--groen);color:var(--inkt);font:400 18px/1.55 var(--tekst);overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--groen);color:var(--inkt);font:400 18px/1.55 var(--tekst);overflow-x:clip}
 img{display:block;width:100%;height:auto}
-h1,h2,h3{font-family:var(--kop);font-weight:900;line-height:1.02;margin:0}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.balk{background:var(--inkt);color:var(--wit);font:900 26px var(--kop);padding:14px 20px}
-.knop{display:inline-block;background:var(--geel);color:var(--inkt);font-weight:700;text-decoration:none;padding:16px 26px;border:5px solid var(--inkt);box-shadow:7px 7px 0 var(--inkt)}
-.knop:hover{transform:translate(3px,3px);box-shadow:4px 4px 0 var(--inkt)}
+h1,h2,h3{font-family:var(--kop);font-weight:900;line-height:.98;margin:0}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
 :focus-visible{outline:4px solid var(--roze);outline-offset:3px}
-.beeld{position:relative;background:var(--wit)}
-.kader{border:6px solid var(--inkt);box-shadow:10px 10px 0 var(--inkt)}
+.oog{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;margin-bottom:14px}
+.knop{display:inline-block;background:var(--geel);color:var(--inkt);font-weight:700;text-decoration:none;padding:16px 26px;border:5px solid var(--inkt);box-shadow:7px 7px 0 var(--inkt);transition:transform .15s,box-shadow .15s}
+.knop:hover{transform:translate(4px,4px);box-shadow:3px 3px 0 var(--inkt)}
+
+/* Openingsdoek */
+.doek{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:repeat(4,1fr);pointer-events:none}
+.doek i{background:var(--groen);border-right:6px solid var(--inkt);animation:doek .8s cubic-bezier(.8,0,.2,1) forwards}
+.doek i:nth-child(1){background:var(--roze)}.doek i:nth-child(2){background:var(--geel);animation-delay:.12s}.doek i:nth-child(3){background:var(--cyaan);animation-delay:.24s}.doek i:nth-child(4){animation-delay:.36s}
+@keyframes doek{to{transform:translateY(-105%)}}
+
+/* Navigatie en voortgang */
+.druppel{position:fixed;top:0;left:0;height:8px;width:100%;background:var(--roze);transform-origin:0 0;transform:scaleX(0);z-index:40}
+nav{position:fixed;top:8px;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;pointer-events:none}
+nav>*{pointer-events:auto}
+.merk{background:var(--inkt);color:var(--wit);font:900 22px var(--kop);padding:6px 14px;text-decoration:none}
+.navlinks{display:none;gap:6px}
+.navlinks a{background:var(--wit);border:3px solid var(--inkt);padding:3px 12px;font-size:15px;font-weight:700;text-decoration:none}
+.navlinks a:hover{background:var(--geel)}
+@media(min-width:900px){.navlinks{display:flex}}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;background:var(--groen);color:var(--wit);overflow:hidden;border-bottom:6px solid var(--inkt);padding:90px 0 50px}
+#verf{position:absolute;inset:0;width:100%;height:100%}
+.hero-in{position:relative;display:grid;gap:30px;align-items:center;width:100%;pointer-events:none}
+.hero-in a,.hero-in button{pointer-events:auto}
+.hero h1{font-size:clamp(62px,14.5vw,196px);line-height:.88;text-shadow:5px 5px 0 var(--inkt)}
+.hero h1 .w{display:inline-block;white-space:nowrap}
+.hero h1 .l{display:inline-block}
+.js .hero h1 .l{animation:val .8s cubic-bezier(.2,1.5,.4,1) backwards}
+@keyframes val{from{transform:translateY(-130%) rotate(-14deg);opacity:0}}
+.intro{display:inline-block;background:var(--inkt);padding:12px 16px;font-size:clamp(18px,1.8vw,22px);max-width:34ch;margin:24px 0}
+.hero-acties{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.wis{background:var(--wit);border:4px solid var(--inkt);padding:12px 16px;font-weight:700;color:var(--inkt)}
+.wis:hover{background:var(--roze)}
+.tip{display:block;margin-top:14px;font-size:15px;font-weight:700}
+.heldfles{justify-self:center;width:min(76vw,400px);transform-style:preserve-3d;transition:transform .15s ease-out}
+
+/* Beeld met label */
+.beeld{position:relative;background:var(--wit);display:block}
+.kader{border:6px solid var(--inkt);box-shadow:12px 12px 0 var(--inkt)}
 .label{position:absolute;background:var(--wit);border:2px solid var(--inkt);container-type:inline-size;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--inkt)}
 .label b{font:900 19cqw/.92 var(--kop)}
 .label i{font:400 10cqw var(--tekst);margin-top:3cqw}
-.hero{border-bottom:6px solid var(--inkt)}
-.hero-beeld .label{left:74.6%;top:47.1%;width:9.1%;height:13.1%}
-.hero-tekst{background:var(--groen);color:var(--wit);padding:34px 20px 44px}
-.hero h1{font-size:clamp(50px,9vw,104px);margin-bottom:16px}
-.hero p{font-size:clamp(19px,2vw,23px);max-width:32ch;margin:0 0 26px}
-.verhaal{background:var(--roze);border-bottom:6px solid var(--inkt);padding:72px 0}
-.verhaal h2{font-size:clamp(42px,7vw,84px);max-width:13ch;margin-bottom:24px}
-.verhaal p{font-size:clamp(19px,2vw,23px);max-width:46ch;margin:0}
-.geuren{padding:72px 0;color:var(--wit)}
-.geuren h2,.atelier h2{font-size:clamp(40px,6vw,72px);margin-bottom:36px}
-.raster{display:grid;gap:30px}
-.kaart h3{font-size:34px;margin:22px 0 4px}
-.kaart p{margin:0}
 .noir .label{left:42.2%;top:43.2%;width:19.7%;height:15.9%}
 .amber .label{left:40.6%;top:46.4%;width:19%;height:13.8%}
 .iris .label{left:39.9%;top:41.1%;width:20.4%;height:16.6%}
 .sage .label{left:38.3%;top:40.9%;width:19.7%;height:15.9%}
-.atelier{background:var(--wit);border-block:6px solid var(--inkt);padding:72px 0}
 .comic .label{left:40.9%;top:44.4%;width:11.9%;height:10.8%}
 .collage .label{left:41.2%;top:46.7%;width:17.7%;height:12%}
 .closeup .label{left:33.8%;top:49.6%;width:27.5%;height:20%;transform:rotate(30deg)}
 .w1{left:23.5%;top:22.7%}.w2{left:70.3%;top:22.7%}.w3{left:23.3%;top:70.3%}.w4{left:70.3%;top:70.3%}
 .warhol .label{width:9.2%;height:7.5%;border-width:1px}
-.cta{background:var(--geel);padding:72px 0}
-.cta-grid{display:grid;gap:30px;align-items:center}
-.cta h2{font-size:clamp(44px,7vw,84px);margin-bottom:18px}
-.cta p{font-size:21px;margin:0}
-.formulier{background:var(--wit);min-height:300px}
-footer{background:var(--inkt);color:var(--wit);padding:30px 0;font-size:15px}
-footer p{margin:0;max-width:75ch}
-@media(min-width:620px){.raster{grid-template-columns:1fr 1fr}}
+.brede .label{left:74.6%;top:47.1%;width:9.1%;height:13.1%}
+
+/* Lichtkrant */
+.krant{background:var(--inkt);color:var(--geel);overflow:hidden;border-bottom:6px solid var(--inkt);white-space:nowrap}
+.krant div{display:inline-block;font:900 clamp(30px,5vw,62px)/1.25 var(--kop);will-change:transform}
+.krant span{margin-right:.6em}
+.krant span:nth-child(even){color:var(--wit)}
+
+/* Manifest */
+.manifest{background:var(--roze);padding:clamp(80px,14vw,170px) 0;border-bottom:6px solid var(--inkt)}
+.manifest p{font:900 clamp(36px,6.2vw,84px)/1.08 var(--kop);max-width:17em}
+.js .manifest .wd{opacity:.16;transition:opacity .25s}
+.js .manifest .wd.aan{opacity:1}
+
+/* Geuren */
+.geuren{background:var(--inkt)}
+.spoor{display:block}
+.paneel{--bg:var(--groen);--tk:var(--wit);background:var(--bg);color:var(--tk);padding:90px 20px 70px;border-bottom:6px solid var(--inkt);display:grid;gap:30px;align-items:center;position:relative;overflow:hidden}
+.paneel h2{font-size:clamp(90px,22vw,290px);line-height:.8;letter-spacing:-.02em}
+.paneel .nr{font-weight:700;letter-spacing:.14em;margin-bottom:10px}
+.paneel .zin{font:700 clamp(26px,3vw,40px)/1.1 var(--kop);margin:22px 0 14px}
+.paneel p{max-width:42ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
+.tags li{background:var(--wit);color:var(--inkt);border:3px solid var(--inkt);padding:2px 12px;font-weight:700;font-size:15px}
+.paneel .beeld{width:min(84vw,420px);justify-self:center;transform:rotate(-3deg)}
+.paneel:nth-child(even) .beeld{transform:rotate(3deg)}
+.hint{display:none}
 @media(min-width:900px){
-.hero{position:relative}
-.hero-tekst{position:absolute;left:20px;bottom:40px;max-width:560px;padding:30px;border:6px solid var(--inkt);box-shadow:10px 10px 0 var(--inkt)}
-.hero h1{font-size:clamp(50px,6vw,84px)}
-.raster{grid-template-columns:repeat(4,1fr)}
+.has-spoor .geuren{height:var(--h,400vh)}
+.has-spoor .plak{position:sticky;top:0;height:100vh;overflow:hidden}
+.has-spoor .spoor{display:flex;height:100%;width:max-content;will-change:transform}
+.has-spoor .paneel{width:100vw;height:100vh;border-bottom:0;border-right:6px solid var(--inkt);grid-template-columns:1.25fr 1fr;padding:80px 6vw 40px}
+.has-spoor .paneel .beeld{width:min(36vw,62vh)}
+.has-spoor .paneel h2{font-size:min(19vw,34vh)}
+.has-spoor .hint{display:block;position:absolute;bottom:18px;left:6vw;font-weight:700;font-size:15px}
+}
+
+/* Secties */
+.blok{padding:clamp(70px,10vw,130px) 0}
+.blok h2{font-size:clamp(46px,8vw,108px);margin-bottom:22px}
+.lead{font-size:clamp(19px,2vw,24px);max-width:48ch;margin-bottom:36px}
+
+/* Posterlab */
+.lab{background:var(--geel);border-bottom:6px solid var(--inkt)}
+.lab-grid{display:grid;gap:34px;align-items:start}
+.keuze{border:0;padding:0;margin:0 0 22px}
+.keuze legend{font-weight:700;margin-bottom:8px;padding:0}
+.keuzes{display:flex;flex-wrap:wrap;gap:10px}
+.keuzes button{background:var(--wit);border:4px solid var(--inkt);padding:8px 14px;font-weight:700;box-shadow:4px 4px 0 var(--inkt)}
+.keuzes button[aria-pressed=true]{background:var(--inkt);color:var(--wit)}
+.kleur{width:50px;height:50px;padding:0!important}
+.kleur[aria-pressed=true]{outline:4px solid var(--inkt);outline-offset:3px}
+#woord{width:100%;max-width:440px;font:700 20px var(--tekst);padding:12px;border:4px solid var(--inkt);background:var(--wit)}
+.poster{--p:var(--roze);--v:#141414;position:relative;aspect-ratio:4/5;background:var(--p);border:6px solid var(--inkt);box-shadow:14px 14px 0 var(--inkt);overflow:hidden;transition:background .3s;container-type:inline-size}
+.poster::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--inkt) 28%,transparent 30%);background-size:5cqw 5cqw;opacity:.9;-webkit-mask-image:linear-gradient(30deg,#000,transparent 55%);mask-image:linear-gradient(30deg,#000,transparent 55%)}
+.poster.stralen::before{background:repeating-conic-gradient(from 0deg at 50% 62%,var(--wit) 0 8deg,transparent 8deg 22deg);-webkit-mask-image:none;mask-image:none;opacity:.75}
+.poster.vlak::before{background:none}
+.poster h3{position:absolute;left:5cqw;right:5cqw;top:4cqw;font-size:13.5cqw;line-height:.9;color:var(--inkt);overflow-wrap:anywhere;z-index:2;background:none}
+.poster svg{position:absolute;left:50%;bottom:4cqw;width:52cqw;transform:translateX(-50%);transition:transform .4s cubic-bezier(.2,1.5,.4,1);z-index:1}
+.poster svg .vloeistof{fill:var(--v);transition:fill .3s}
+.poster small{position:absolute;right:3cqw;bottom:2cqw;font-weight:700;font-size:3cqw;z-index:2}
+
+/* Quiz */
+.quiz{background:var(--cyaan);border-bottom:6px solid var(--inkt)}
+.kaartje{background:var(--wit);border:6px solid var(--inkt);box-shadow:12px 12px 0 var(--inkt);padding:clamp(22px,4vw,44px);max-width:860px}
+.kaartje h3{font-size:clamp(32px,5vw,58px);margin-bottom:24px}
+.opties{display:grid;gap:12px}
+.opties button{text-align:left;background:var(--creme);border:4px solid var(--inkt);padding:14px 18px;font-weight:700;transition:background .15s,transform .15s}
+.opties button:hover{background:var(--geel);transform:translateX(8px)}
+.stand{font-weight:700;margin-bottom:10px}
+.uitslag{display:grid;gap:24px;align-items:center}
+.uitslag p{margin:12px 0 20px}
+@media(min-width:700px){.uitslag{grid-template-columns:260px 1fr}}
+
+/* Stapel */
+.stapel-sec{background:var(--creme);border-bottom:6px solid var(--inkt);overflow:hidden}
+.stapel{display:grid;gap:26px}
+.stapel .beeld{touch-action:auto}
+@media(min-width:900px){
+.stapel{display:block;position:relative;height:760px}
+.stapel .beeld{position:absolute;width:300px;cursor:grab;touch-action:none;user-select:none;transition:box-shadow .15s}
+.stapel .beeld:active{cursor:grabbing;box-shadow:22px 22px 0 var(--inkt)}
+.stapel img{pointer-events:none}
+.stapel .brede{width:520px}
+}
+
+/* Route */
+.route{background:var(--groen);color:var(--wit);border-bottom:6px solid var(--inkt)}
+.stappen{display:grid;gap:24px;list-style:none;padding:0;margin:0;counter-reset:s}
+.stappen li{position:relative;background:var(--wit);color:var(--inkt);border:5px solid var(--inkt);box-shadow:8px 8px 0 var(--inkt);padding:22px;counter-increment:s}
+.stappen li::before{content:counter(s);display:block;font:900 66px/1 var(--kop);color:var(--roze);-webkit-text-stroke:2px var(--inkt)}
+.stappen h3{font-size:27px;margin:8px 0}
+.stappen li::after{content:"";position:absolute;left:24px;top:100%;width:12px;height:var(--d,40px);background:var(--kl,var(--geel));border:3px solid var(--inkt);border-top:0;border-radius:0 0 8px 8px;margin-top:5px;transform-origin:top}
+.js .stappen li::after{transform:scaleY(0);transition:transform 1s .25s}
+.js .stappen li.in::after{transform:scaleY(1)}
+.stappen li:last-child::after{display:none}
+@media(min-width:900px){.stappen{grid-template-columns:repeat(4,1fr)}.stappen li::after{display:block}}
+
+/* Inschrijven */
+.cta{background:var(--geel);border-bottom:6px solid var(--inkt);padding:clamp(70px,10vw,120px) 0}
+.cta-grid{display:grid;gap:34px;align-items:center}
+.cta h2{font-size:clamp(50px,8vw,106px);margin-bottom:18px}
+.cta p{font-size:21px}
+.formulier{background:var(--wit);border:6px solid var(--inkt);box-shadow:12px 12px 0 var(--inkt);min-height:300px}
+
+/* Vragen */
+.vragen{background:var(--wit);border-bottom:6px solid var(--inkt)}
+details{border:4px solid var(--inkt);margin-bottom:12px;background:var(--creme)}
+summary{font:700 clamp(20px,2.4vw,27px)/1.2 var(--kop);padding:16px 18px;cursor:pointer}
+details[open] summary{background:var(--inkt);color:var(--wit)}
+details p{padding:16px 18px;max-width:64ch}
+
+/* Slot */
+footer{background:var(--inkt);color:var(--wit);padding:60px 0 30px;overflow:hidden}
+.reus{font:900 17.5vw/.85 var(--kop);white-space:nowrap;color:transparent;-webkit-text-stroke:2px var(--wit);text-align:center;margin-bottom:34px;transition:color .3s}
+.reus:hover{color:var(--roze)}
+footer p{max-width:75ch;font-size:15px}
+
+/* Inkomen bij scrollen */
+.js .op{opacity:0;transform:translateY(46px) rotate(1.5deg);transition:opacity .7s,transform .7s cubic-bezier(.2,1.2,.4,1)}
+.js .op.in{opacity:1;transform:none}
+
+@media(min-width:900px){
+.hero-in{grid-template-columns:1.5fr 1fr}
+.hero h1{font-size:min(10.5vw,19vh)}
+.lab-grid{grid-template-columns:1fr 1fr}
 .cta-grid{grid-template-columns:1fr 1fr}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.knop:hover{transform:none}}
+@media(min-width:900px) and (min-height:760px){.heldfles{width:min(30vw,62vh)}}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.doek{display:none}
+.js .hero h1 .l{animation:none}
+.js .op,.js .manifest .wd{opacity:1;transform:none;transition:none}
+.js .stappen li::after{transform:none;transition:none}
+.knop,.opties button,.poster svg{transition:none}
+}
 </style>
 </head>
 <body>
-<div class="balk">Atelier Noir</div>
-<header class="hero">
-  <div class="beeld hero-beeld">
-    <img src="https://media.weavy.ai/image/upload/v1793722004/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/i7qx3sbgpogmxedkw5oq.png" width="1376" height="768" alt="Geschilderde parfumfles Amber tussen verfspatten in roze, geel, cyaan en groen">
-    <div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Amber</i></div>
-  </div>
-  <div class="hero-tekst">
-    <h1>Parfum als statement.</h1>
-    <p>Een nieuw parfumatelier voor kunstenaars, makers en iedereen die liever opvalt dan past.</p>
-    <a class="knop" href="#inschrijven">Hoor het als eerste</a>
+<div class="doek" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="druppel" aria-hidden="true"></div>
+<nav aria-label="Hoofdmenu">
+  <a class="merk" href="#top">Atelier Noir</a>
+  <div class="navlinks"><a href="#geuren">Geuren</a><a href="#lab">Posterlab</a><a href="#quiz">Quiz</a><a href="#inschrijven">Inschrijven</a></div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="verf" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div>
+      <h1 id="titel">Parfum als statement.</h1>
+      <p class="intro">Een nieuw parfumatelier voor kunstenaars, makers en iedereen die liever opvalt dan past.</p>
+      <div class="hero-acties">
+        <a class="knop" href="#inschrijven">Hoor het als eerste</a>
+        <button class="wis" id="wis" type="button">Maak het doek leeg</button>
+      </div>
+      <span class="tip" id="tip">Beweeg over dit doek: jij schildert mee.</span>
+    </div>
+    <div class="beeld kader noir heldfles" id="heldfles">
+      <img src="https://media.weavy.ai/image/upload/v1793720629/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/ic66jszh7t954ygichow.png" width="928" height="1152" alt="Geschilderde zwarte parfumfles van Atelier Noir tussen verfdruppels in roze, geel, cyaan en groen">
+      <div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Noir</i></div>
+    </div>
   </div>
 </header>
+
+<div class="krant" aria-hidden="true"><div id="krant"><span>NIET VOOR IEDEREEN</span><span>GOED ZO</span><span>WAT DRAAG JIJ NU?</span><span>BUITEN DE LIJNTJES</span><span>KUNST OM TE DRAGEN</span><span>NIET VOOR IEDEREEN</span><span>GOED ZO</span><span>WAT DRAAG JIJ NU?</span><span>BUITEN DE LIJNTJES</span><span>KUNST OM TE DRAGEN</span></div></div>
+
 <main>
-  <section class="verhaal">
-    <div class="wrap">
-      <h2>Parfum mag een mening hebben.</h2>
-      <p>Atelier Noir begon met een eenvoudige vraag: waarom ruikt zoveel parfum hetzelfde, terwijl makers juist anders willen zijn? Daarom behandelen we elke geur als een werk op doek.</p>
-    </div>
-  </section>
-  <section class="geuren">
-    <div class="wrap">
-      <h2>Vier geuren. Vier streken.</h2>
-      <div class="raster">
-        <article class="kaart"><div class="beeld kader noir"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720629/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/ic66jszh7t954ygichow.png" width="928" height="1152" alt="Geschilderde fles Noir"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Noir</i></div></div><h3>Noir</h3><p>De donkere eerste streek.</p></article>
-        <article class="kaart"><div class="beeld kader amber"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720862/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/tgxykw5d5xqhzt5oryz9.png" width="928" height="1152" alt="Geschilderde fles Amber"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Amber</i></div></div><h3>Amber</h3><p>De warme kleur die niet verdwijnt.</p></article>
-        <article class="kaart"><div class="beeld kader iris"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720823/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/xfwkpsbjfi6fd3fqjiwx.png" width="928" height="1152" alt="Geschilderde fles Iris"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Iris</i></div></div><h3>Iris</h3><p>De bloem die terugpraat.</p></article>
-        <article class="kaart"><div class="beeld kader sage"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720765/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/bqq5tafubyt7zzmbrjjx.png" width="928" height="1152" alt="Geschilderde fles Sage"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Sage</i></div></div><h3>Sage</h3><p>De ongetemde schets.</p></article>
+<section class="manifest">
+  <div class="wrap"><p id="manifest">Waarom ruikt zoveel parfum hetzelfde, terwijl makers juist anders willen zijn? Wij behandelen elke geur als een werk op doek. Geen rijtje. Geen regels. Gewoon een geur die het gesprek opent.</p></div>
+</section>
+
+<section class="geuren" id="geuren" aria-label="De vier geuren">
+  <div class="plak"><div class="spoor" id="spoor">
+    <article class="paneel" style="--bg:#1F4F39">
+      <div><p class="nr">Geur 01 / 04</p><h2>Noir</h2><p class="zin">De donkere eerste streek.</p><p>Voor wie een standpunt heeft en dat niet hoeft uit te leggen. Zwart is nooit neutraal.</p><ul class="tags"><li>Gedurfd</li><li>Donker</li><li>Eerste streek</li></ul></div>
+      <div class="beeld kader noir"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720629/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/ic66jszh7t954ygichow.png" width="928" height="1152" alt="Geschilderde fles Noir"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Noir</i></div></div>
+      <span class="hint">Blijf scrollen: de doeken schuiven voorbij.</span>
+    </article>
+    <article class="paneel" style="--bg:#FF8A00;--tk:#141414">
+      <div><p class="nr">Geur 02 / 04</p><h2>Amber</h2><p class="zin">De warme kleur die niet verdwijnt.</p><p>Voor makers die liever opvallen dan passen, en overal een werkplek van maken. Warm is ook gedurfd.</p><ul class="tags"><li>Warm</li><li>Luid</li><li>Ongefilterd</li></ul></div>
+      <div class="beeld kader amber"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720862/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/tgxykw5d5xqhzt5oryz9.png" width="928" height="1152" alt="Geschilderde fles Amber"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Amber</i></div></div>
+    </article>
+    <article class="paneel" style="--bg:#8A3FFC">
+      <div><p class="nr">Geur 03 / 04</p><h2>Iris</h2><p class="zin">De bloem die terugpraat.</p><p>Bloemig op eigen voorwaarden. Voor wie de voor de hand liggende kleur overslaat. Zacht, maar niet stil.</p><ul class="tags"><li>Bloemig</li><li>Eigenzinnig</li><li>Paars. Punt.</li></ul></div>
+      <div class="beeld kader iris"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720823/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/xfwkpsbjfi6fd3fqjiwx.png" width="928" height="1152" alt="Geschilderde fles Iris"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Iris</i></div></div>
+    </article>
+    <article class="paneel" style="--bg:#C6E000;--tk:#141414">
+      <div><p class="nr">Geur 04 / 04</p><h2>Sage</h2><p class="zin">De ongetemde schets.</p><p>Open, onaf en vol ideeën. Voor wie niet netjes binnen de lijnen blijft. Fris is niet saai.</p><ul class="tags"><li>Fris</li><li>Ongetemd</li><li>Onaf</li></ul></div>
+      <div class="beeld kader sage"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793720765/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/bqq5tafubyt7zzmbrjjx.png" width="928" height="1152" alt="Geschilderde fles Sage"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Sage</i></div></div>
+    </article>
+  </div></div>
+</section>
+
+<section class="lab blok" id="lab">
+  <div class="wrap">
+    <p class="oog op">Experiment 01</p>
+    <h2 class="op">Maak je eigen poster.</h2>
+    <p class="lead op">Dit doek is van jou. Kies een geur, een kleur en een achtergrond, en schrijf er je eigen statement op.</p>
+    <div class="lab-grid">
+      <div class="op">
+        <fieldset class="keuze"><legend>Geur</legend><div class="keuzes" id="kGeur"><button type="button" data-v="#141414" aria-pressed="true">Noir</button><button type="button" data-v="#FF8A00" aria-pressed="false">Amber</button><button type="button" data-v="#8A3FFC" aria-pressed="false">Iris</button><button type="button" data-v="#C6E000" aria-pressed="false">Sage</button></div></fieldset>
+        <fieldset class="keuze"><legend>Kleur</legend><div class="keuzes" id="kKleur"><button class="kleur" type="button" style="background:#FF3D8B" data-v="#FF3D8B" aria-label="Roze" aria-pressed="true"></button><button class="kleur" type="button" style="background:#19B5E8" data-v="#19B5E8" aria-label="Cyaan" aria-pressed="false"></button><button class="kleur" type="button" style="background:#2F6A4D" data-v="#2F6A4D" aria-label="Groen" aria-pressed="false"></button><button class="kleur" type="button" style="background:#F6F1E4" data-v="#F6F1E4" aria-label="Crème" aria-pressed="false"></button></div></fieldset>
+        <fieldset class="keuze"><legend>Achtergrond</legend><div class="keuzes" id="kVorm"><button type="button" data-v="" aria-pressed="true">Rasterpunten</button><button type="button" data-v="stralen" aria-pressed="false">Stralen</button><button type="button" data-v="vlak" aria-pressed="false">Vlak</button></div></fieldset>
+        <label for="woord" style="font-weight:700;display:block;margin-bottom:8px">Jouw statement</label>
+        <input id="woord" maxlength="24" value="Zeg niets. Draag dit.">
+        <div style="margin-top:22px"><button class="knop" id="schud" type="button">Verras me</button></div>
+      </div>
+      <div class="poster op" id="poster" role="img" aria-label="Jouw zelfgemaakte poster met een parfumfles">
+        <h3 id="pTekst">Zeg niets. Draag dit.</h3>
+        <svg id="pFles" viewBox="0 0 300 430" aria-hidden="true"><rect x="102" y="6" width="96" height="84" fill="#141414"/><rect x="116" y="18" width="10" height="60" fill="#fff"/><rect x="118" y="90" width="64" height="22" fill="#141414"/><path d="M78 112H222L280 420H20Z" fill="#fff" stroke="#141414" stroke-width="10" stroke-linejoin="round"/><path class="vloeistof" d="M90 140H210L252 385H48Z"/><rect x="96" y="210" width="108" height="94" fill="#fff" stroke="#141414" stroke-width="5"/><text x="150" y="250" text-anchor="middle" font-family="Bodoni Moda,Georgia,serif" font-weight="900" font-size="24">Atelier</text><text x="150" y="276" text-anchor="middle" font-family="Bodoni Moda,Georgia,serif" font-weight="900" font-size="24">Noir</text></svg>
+        <small>Atelier Noir</small>
       </div>
     </div>
-  </section>
-  <section class="atelier">
-    <div class="wrap">
-      <h2>Uit het atelier.</h2>
-      <div class="raster">
-        <div class="beeld kader closeup"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793786992/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/ga8stn8oc34dtnuzmxjs.png" width="928" height="1152" alt="Close-up in pop art van een schuine parfumfles met rasterpunten"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Amber</i></div></div>
-        <div class="beeld kader warhol"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793721984/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/jxwp547hirnht0aqewk3.png" width="928" height="1152" alt="Zeefdrukraster met vier parfumflessen in felle kleuren"><div class="label w1" aria-hidden="true"><b>Atelier<br>Noir</b></div><div class="label w2" aria-hidden="true"><b>Atelier<br>Noir</b></div><div class="label w3" aria-hidden="true"><b>Atelier<br>Noir</b></div><div class="label w4" aria-hidden="true"><b>Atelier<br>Noir</b></div></div>
-        <div class="beeld kader comic"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793722140/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/q6rdeiwtmgoa5hpsssza.png" width="928" height="1152" alt="Parfumfles in een explosie van stralen en abstracte vormen"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Sage</i></div></div>
-        <div class="beeld kader collage"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793722014/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/xyapvt4f514ua4h3m6cz.png" width="928" height="1152" alt="Abstracte papierknipsel-collage van een parfumfles"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Iris</i></div></div>
-      </div>
+  </div>
+</section>
+
+<section class="quiz blok" id="quiz">
+  <div class="wrap">
+    <p class="oog op">Experiment 02</p>
+    <h2 class="op">Welke geur ben jij?</h2>
+    <p class="lead op">Drie vragen. Geen foute antwoorden. Wel een uitgesproken mening over je uitkomst.</p>
+    <div class="kaartje op" id="kaartje" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="stapel-sec blok">
+  <div class="wrap">
+    <p class="oog op">Experiment 03</p>
+    <h2 class="op">Rommel op de werktafel.</h2>
+    <p class="lead op">Zo testten we onze stijl. Sleep de doeken op je computer gerust door elkaar: dit atelier is nooit opgeruimd.</p>
+    <div class="stapel" id="stapel">
+      <div class="beeld kader brede" data-x="0" data-y="2" data-r="-4"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793722004/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/i7qx3sbgpogmxedkw5oq.png" width="1376" height="768" alt="Brede geschilderde compositie met de fles Amber"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Amber</i></div></div>
+      <div class="beeld kader closeup" data-x="44" data-y="0" data-r="5"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793786992/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/ga8stn8oc34dtnuzmxjs.png" width="928" height="1152" alt="Close-up in pop art van een schuine parfumfles met rasterpunten"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Amber</i></div></div>
+      <div class="beeld kader warhol" data-x="72" data-y="10" data-r="-6"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793721984/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/jxwp547hirnht0aqewk3.png" width="928" height="1152" alt="Zeefdrukraster met vier parfumflessen in felle kleuren"><div class="label w1" aria-hidden="true"><b>Atelier<br>Noir</b></div><div class="label w2" aria-hidden="true"><b>Atelier<br>Noir</b></div><div class="label w3" aria-hidden="true"><b>Atelier<br>Noir</b></div><div class="label w4" aria-hidden="true"><b>Atelier<br>Noir</b></div></div>
+      <div class="beeld kader comic" data-x="6" data-y="42" data-r="4"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793722140/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/q6rdeiwtmgoa5hpsssza.png" width="928" height="1152" alt="Parfumfles in een explosie van stralen en abstracte vormen"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Sage</i></div></div>
+      <div class="beeld kader collage" data-x="36" data-y="48" data-r="-3"><img loading="lazy" src="https://media.weavy.ai/image/upload/v1793722014/uploads/J3oJldJsx0SG6XbPrXvjUzg5MHk1/xyapvt4f514ua4h3m6cz.png" width="928" height="1152" alt="Abstracte papierknipsel-collage van een parfumfles"><div class="label" aria-hidden="true"><b>Atelier<br>Noir</b><i>Iris</i></div></div>
     </div>
-  </section>
-  <section class="cta" id="inschrijven">
-    <div class="wrap cta-grid">
-      <div>
-        <h2>Klaar om op te vallen?</h2>
-        <p>Schrijf je in en hoor als eerste van Atelier Noir.</p>
-      </div>
-      <div class="formulier kader"><div class="ml-embedded" data-form="g5M8Ot"></div></div>
+  </div>
+</section>
+
+<section class="route blok">
+  <div class="wrap">
+    <h2 class="op">Zo kom je binnen.</h2>
+    <p class="lead op">Geen spamstroom, wel een duidelijke route van vier stappen.</p>
+    <ol class="stappen">
+      <li class="op" style="--d:50px;--kl:#FF3D8B"><h3>Inschrijven</h3><p>Vul je naam en e-mailadres in en vink de opt-in zelf aan.</p></li>
+      <li class="op" style="--d:80px;--kl:#FFD400"><h3>Bevestigen</h3><p>Je krijgt een mail met een bevestigingsknop. Zonder die klik gebeurt er niets.</p></li>
+      <li class="op" style="--d:36px;--kl:#19B5E8"><h3>Welkom</h3><p>Daarna volgt meteen de welkomstmail uit het atelier.</p></li>
+      <li class="op"><h3>Twee dagen later</h3><p>Opende je die mail? Dan krijg je ons verhaal. Zo niet, dan krijg je een korte herinnering.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cta" id="inschrijven">
+  <div class="wrap cta-grid">
+    <div class="op">
+      <h2>Klaar om op te vallen?</h2>
+      <p>Schrijf je in en hoor als eerste van Atelier Noir.</p>
     </div>
-  </section>
+    <div class="formulier op"><div class="ml-embedded" data-form="g5M8Ot"></div></div>
+  </div>
+</section>
+
+<section class="vragen blok">
+  <div class="wrap">
+    <h2 class="op">Eerlijke vragen.</h2>
+    <details class="op"><summary>Kan ik dit parfum echt kopen?</summary><p>Nee. Atelier Noir is een fictief merk, gemaakt voor een schoolopdracht rond geautomatiseerde campagnes. De geuren bestaan alleen als idee en beeld.</p></details>
+    <details class="op"><summary>Wat doen jullie met mijn gegevens?</summary><p>Je naam en e-mailadres worden via MailerLite bewaard, alleen om je de e-mails van dit project te sturen. Ze worden niet voor iets anders gebruikt.</p></details>
+    <details class="op"><summary>Kan ik me weer uitschrijven?</summary><p>Ja, altijd. Onderaan elke e-mail staat een uitschrijflink.</p></details>
+    <details class="op"><summary>Is dit gemaakt met AI?</summary><p>Ja. De beelden zijn gemaakt met AI in Figma Weave, op basis van aangeleverde productfoto's. De teksten en deze pagina zijn gemaakt met hulp van Claude.</p></details>
+  </div>
+</section>
 </main>
+
 <footer>
+  <div class="reus" aria-hidden="true">ATELIER NOIR</div>
   <div class="wrap"><p>Atelier Noir is een fictief merk, gemaakt voor een schoolopdracht. Beelden zijn gemaakt met AI (Figma Weave), en teksten met hulp van Claude. Je gegevens gebruiken we alleen om je e-mails over dit project te sturen, en je kunt je altijd uitschrijven.</p></div>
 </footer>
+
+<script>
+(function(){
+var stil=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
+var groot=function(){return innerWidth>=900};
+
+/* Kop letter per letter */
+var t=$('#titel'),tx=t.textContent,n=0;t.setAttribute('aria-label',tx);
+t.innerHTML=tx.split(' ').map(function(w){return '<span class="w" aria-hidden="true">'+w.split('').map(function(c){n++;return '<span class="l" style="animation-delay:'+(.7+n*.035)+'s">'+c+'</span>'}).join('')+'</span>'}).join(' ');
+
+/* Manifest woord per woord */
+var m=$('#manifest');m.innerHTML=m.textContent.split(' ').map(function(w){return '<span class="wd">'+w+'</span>'}).join(' ');
+var wds=$$('.wd');
+
+/* Verfdoek */
+var hero=$('.hero'),cv=$('#verf'),x=cv.getContext('2d'),kl=['#FF3D8B','#FFD400','#19B5E8','#F6F1E4','#FF8A00','#141414'],ki=0,dr=[],px=null,py=null;
+function maat(){var r=hero.getBoundingClientRect(),o=document.createElement('canvas');o.width=cv.width;o.height=cv.height;if(cv.width)o.getContext('2d').drawImage(cv,0,0);cv.width=r.width;cv.height=r.height;if(o.width)x.drawImage(o,0,0)}
+function vlek(a,b,s,c){x.fillStyle=c;x.beginPath();x.arc(a,b,s,0,7);x.fill();for(var i=0,k=5+s/3;i<k;i++){var h=Math.random()*6.3,d=s+Math.random()*s*2.2;x.beginPath();x.arc(a+Math.cos(h)*d,b+Math.sin(h)*d,Math.random()*s*.18+1,0,7);x.fill()}if(dr.length<60&&Math.random()<.55)dr.push({x:a+(Math.random()-.5)*s,y:b,r:Math.random()*s*.16+2,v:Math.random()*2+.8,l:Math.random()*220+60,c:c})}
+function lopen(){for(var i=dr.length-1;i>=0;i--){var d=dr[i];x.fillStyle=d.c;x.beginPath();x.arc(d.x,d.y,d.r,0,7);x.fill();d.y+=d.v;d.l-=d.v;if(d.l<=0)dr.splice(i,1)}if(!stil)requestAnimationFrame(lopen)}
+function pos(e){var r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
+hero.addEventListener('pointermove',function(e){if(e.pointerType==='touch')return;var p=pos(e);if(px!==null){var d=Math.hypot(p[0]-px,p[1]-py);if(d>26){vlek(p[0],p[1],Math.min(9+d/5,34),kl[ki=(ki+1)%kl.length]);px=p[0];py=p[1]}}else{px=p[0];py=p[1]}});
+hero.addEventListener('pointerdown',function(e){if(e.target.closest('a,button'))return;var p=pos(e);vlek(p[0],p[1],44,kl[ki=(ki+1)%kl.length])});
+$('#wis').addEventListener('click',function(){dr=[];x.clearRect(0,0,cv.width,cv.height)});
+if(matchMedia('(hover:none)').matches)$('#tip').textContent='Tik op dit doek: jij schildert mee.';
+maat();addEventListener('resize',maat);
+if(stil){vlek(cv.width*.8,cv.height*.2,50,'#FF3D8B');vlek(cv.width*.1,cv.height*.85,40,'#FFD400')}
+else{requestAnimationFrame(lopen);[[.08,.18,'#FF3D8B',46],[.9,.12,'#FFD400',54],[.56,.88,'#19B5E8',48],[.04,.86,'#FFD400',34],[.66,.2,'#F6F1E4',26]].forEach(function(s,i){setTimeout(function(){vlek(cv.width*s[0],cv.height*s[1],s[3],s[2])},900+i*260)})}
+
+/* Fles kantelt mee */
+var hf=$('#heldfles');if(!stil&&matchMedia('(hover:hover)').matches)hero.addEventListener('pointermove',function(e){var a=(e.clientX/innerWidth-.5),b=(e.clientY/innerHeight-.5);hf.style.transform='perspective(900px) rotateY('+a*22+'deg) rotateX('+(-b*16)+'deg) rotate('+a*5+'deg)'});
+
+/* Horizontale geuren */
+var spoor=$('#spoor'),sec=$('#geuren');
+function bouw(){var aan=groot()&&!stil;document.documentElement.classList.toggle('has-spoor',aan);if(aan){sec.style.setProperty('--h',(spoor.scrollWidth-innerWidth+innerHeight)+'px')}else{spoor.style.transform=''}}
+bouw();addEventListener('resize',bouw);
+
+/* Scrollreacties */
+var krant=$('#krant'),bar=$('.druppel'),tik=false;
+function scrol(){tik=false;var y=scrollY,hg=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(hg>0?y/hg:0)+')';
+if(!stil)krant.style.transform='translateX('+(-(y*.45)%(krant.scrollWidth/2))+'px)';
+var r=m.getBoundingClientRect(),p=(innerHeight*.85-r.top)/(r.height+innerHeight*.35),lim=Math.floor(p*wds.length);wds.forEach(function(w,i){w.classList.toggle('aan',i<lim)});
+if(document.documentElement.classList.contains('has-spoor')){var s=sec.getBoundingClientRect(),q=Math.min(1,Math.max(0,-s.top/(s.height-innerHeight)));spoor.style.transform='translateX('+(-q*(spoor.scrollWidth-innerWidth))+'px)'}}
+addEventListener('scroll',function(){if(!tik){tik=true;requestAnimationFrame(scrol)}},{passive:true});addEventListener('resize',scrol);scrol();
+
+/* Inkomen */
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});$$('.op').forEach(function(e){io.observe(e)})}else{$$('.op').forEach(function(e){e.classList.add('in')})}
+
+/* Posterlab */
+var post=$('#poster'),fles=$('#pFles'),rot=0;
+function kies(gr,f){var bs=$$('button',gr);bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(o){o.setAttribute('aria-pressed',o===b)});f(b.dataset.v);rot=rot?0:6;fles.style.transform='translateX(-50%) rotate('+(rot-3)+'deg)'})})}
+kies($('#kGeur'),function(v){post.style.setProperty('--v',v)});
+kies($('#kKleur'),function(v){post.style.setProperty('--p',v)});
+kies($('#kVorm'),function(v){post.classList.remove('stralen','vlak');if(v)post.classList.add(v)});
+var wrd=$('#woord'),pt=$('#pTekst');wrd.addEventListener('input',function(){pt.textContent=wrd.value||' '});
+var zinnen=['Zwart is een houding.','Paars. Punt.','Fris? Ja. Braaf? Nee.','Warm. Luid.','Niet voor iedereen.','Maak je entree.','Kunst om te dragen.'];
+$('#schud').addEventListener('click',function(){['#kGeur','#kKleur','#kVorm'].forEach(function(s){var b=$$('button',$(s));b[Math.floor(Math.random()*b.length)].click()});wrd.value=zinnen[Math.floor(Math.random()*zinnen.length)];pt.textContent=wrd.value});
+
+/* Quiz */
+var Q=[['Waar werk je het liefst?',[['In een donkere studio, om drie uur \'s nachts','Noir'],['Overal waar ik mijn spullen kwijt kan','Amber'],['Tussen te veel planten en boeken','Iris'],['Buiten, met een half idee en een potlood','Sage']]],
+['Welk commentaar krijg je het vaakst?',[['"Daar heb je wel een mening over."','Noir'],['"Jou hoor je al van ver."','Amber'],['"Dat had ik zelf nooit gekozen."','Iris'],['"Is dat al af?"','Sage']]],
+['Je krijgt een leeg doek. Wat doe je?',[['Ik maak het helemaal zwart','Noir'],['Ik gooi er warme verf op','Amber'],['Ik kies de kleur die niemand kiest','Iris'],['Ik schets en laat het open','Sage']]]];
+var U={Noir:['De donkere eerste streek.','Jij hebt geen uitleg nodig. Je komt binnen, en de kamer past zich aan.'],Amber:['De warme kleur die niet verdwijnt.','Jij vult de ruimte. Onopvallend blijven is nooit jouw plan geweest.'],Iris:['De bloem die terugpraat.','Jij kiest wat niemand kiest, en je hebt er nog gelijk in ook.'],Sage:['De ongetemde schets.','Bij jou is niets ooit af, en dat is precies het punt.']};
+var kaart=$('#kaartje'),stap=0,sc={};
+function vraag(){var q=Q[stap];kaart.innerHTML='<p class="stand">Vraag '+(stap+1)+' van '+Q.length+'</p><h3>'+q[0]+'</h3><div class="opties">'+q[1].map(function(o){return '<button type="button" data-g="'+o[1]+'">'+o[0]+'</button>'}).join('')+'</div>';$$('button',kaart).forEach(function(b){b.addEventListener('click',function(){sc[b.dataset.g]=(sc[b.dataset.g]||0)+1;stap++;stap<Q.length?vraag():einde(b.dataset.g)})})}
+function einde(l){var w=Object.keys(sc).sort(function(a,b){return sc[b]-sc[a]||(b===l)-(a===l)})[0],o=$('#geuren .beeld.'+w.toLowerCase()).cloneNode(true);kaart.innerHTML='<div class="uitslag"><div id="uB"></div><div><p class="stand">Jouw geur</p><h3 style="margin:0">'+w+'</h3><p><strong>'+U[w][0]+'</strong> '+U[w][1]+'</p><a class="knop" href="#inschrijven">Hoor het als eerste</a> <button type="button" class="wis" id="opnieuw">Opnieuw</button></div></div>';o.querySelector('img').loading='eager';$('#uB').appendChild(o);$('#opnieuw').addEventListener('click',function(){stap=0;sc={};vraag()})}
+vraag();
+
+/* Werktafel */
+var z=5,kaarten=$$('#stapel .beeld');
+function plaats(){kaarten.forEach(function(k){if(groot()){var W=$('#stapel').clientWidth,H=$('#stapel').clientHeight;k.style.left=k.dataset.x/100*W+'px';k.style.top=k.dataset.y/100*H+'px';k.style.transform='rotate('+k.dataset.r+'deg)'}else{k.style.left=k.style.top=k.style.transform=''}})}
+plaats();addEventListener('resize',plaats);
+kaarten.forEach(function(k){var sx,sy,ox,oy,aan=false;k.addEventListener('pointerdown',function(e){if(!groot())return;aan=true;k.setPointerCapture(e.pointerId);k.style.zIndex=++z;sx=e.clientX;sy=e.clientY;ox=k.offsetLeft;oy=k.offsetTop});k.addEventListener('pointermove',function(e){if(!aan)return;k.style.left=ox+e.clientX-sx+'px';k.style.top=oy+e.clientY-sy+'px'});['pointerup','pointercancel'].forEach(function(n){k.addEventListener(n,function(){aan=false})})});
+})();
+</script>
 </body>
 </html>
