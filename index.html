@@ -221,6 +221,12 @@ html{scroll-behavior:auto}
 .js .stappen li::after{transform:none;transition:none}
 .knop,.opties button,.poster svg{transition:none}
 }
+.film{background:var(--inkt);color:var(--wit);padding:clamp(48px,8vw,96px) 0;border-bottom:6px solid var(--inkt)}
+.film .wrap{display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px);align-items:center;justify-content:center}
+.film h2{font:900 clamp(44px,7vw,92px)/.95 var(--kop);margin:0 0 16px;color:var(--wit)}
+.film-tekst{flex:1 1 300px;max-width:520px}
+.film-tekst p{margin:0;font-size:clamp(18px,1.8vw,22px)}
+.film video{display:block;width:min(100%,380px);aspect-ratio:9/16;background:#000;border:6px solid var(--wit);box-shadow:12px 12px 0 var(--roze)}
 </style>
 </head>
 <body>
@@ -255,6 +261,13 @@ html{scroll-behavior:auto}
 <main>
 <section class="manifest">
   <div class="wrap"><p id="manifest">Waarom ruikt zoveel parfum hetzelfde, terwijl makers juist anders willen zijn? Wij behandelen elke geur als een werk op doek. Geen rijtje. Geen regels. Gewoon een geur die het gesprek opent.</p></div>
+</section>
+
+<section class="film" id="film" aria-label="Promovideo">
+  <div class="wrap">
+    <div class="film-tekst"><h2>Parfum in beweging.</h2><p>De fles smelt, de verf neemt het over en het doek explodeert. Zo klinkt een statement zonder woorden.</p></div>
+    <video src="atelier-noir-promo.webm" controls muted loop playsinline autoplay preload="metadata" aria-label="Promovideo van Atelier Noir: een geschilderde parfumfles smelt in verf en verandert in een comic-explosie."></video>
+  </div>
 </section>
 
 <section class="geuren" id="geuren" aria-label="De vier geuren">
@@ -355,14 +368,14 @@ html{scroll-behavior:auto}
     <details class="op"><summary>Kan ik dit parfum echt kopen?</summary><p>Nee. Atelier Noir is een fictief merk, gemaakt voor een schoolopdracht rond geautomatiseerde campagnes. De geuren bestaan alleen als idee en beeld.</p></details>
     <details class="op"><summary>Wat doen jullie met mijn gegevens?</summary><p>Je naam en e-mailadres worden via MailerLite bewaard, alleen om je de e-mails van dit project te sturen. Ze worden niet voor iets anders gebruikt.</p></details>
     <details class="op"><summary>Kan ik me weer uitschrijven?</summary><p>Ja, altijd. Onderaan elke e-mail staat een uitschrijflink.</p></details>
-    <details class="op"><summary>Is dit gemaakt met AI?</summary><p>Ja. De beelden zijn gemaakt met AI in Figma Weave, op basis van aangeleverde productfoto's. De teksten en deze pagina zijn gemaakt met hulp van Claude.</p></details>
+    <details class="op"><summary>Is dit gemaakt met AI?</summary><p>Ja. De beelden zijn gemaakt met AI in Figma Weave, op basis van aangeleverde productfoto's. De video is gemaakt met AI in Google Flow. De teksten en deze pagina zijn gemaakt met hulp van Claude.</p></details>
   </div>
 </section>
 </main>
 
 <footer>
   <svg class="reus" viewBox="0 0 1000 125" aria-hidden="true"><text x="500" y="106" text-anchor="middle" textLength="990" lengthAdjust="spacingAndGlyphs">ATELIER NOIR</text></svg>
-  <div class="wrap"><p>Atelier Noir is een fictief merk, gemaakt voor een schoolopdracht. Beelden zijn gemaakt met AI (Figma Weave), en teksten met hulp van Claude. Je gegevens gebruiken we alleen om je e-mails over dit project te sturen, en je kunt je altijd uitschrijven.</p></div>
+  <div class="wrap"><p>Atelier Noir is een fictief merk, gemaakt voor een schoolopdracht. Beelden zijn gemaakt met AI (Figma Weave), de video met AI (Google Flow), en teksten met hulp van Claude. Je gegevens gebruiken we alleen om je e-mails over dit project te sturen, en je kunt je altijd uitschrijven.</p></div>
 </footer>
 
 <script>
@@ -439,5 +452,6 @@ plaats();addEventListener('resize',plaats);
 kaarten.forEach(function(k){var sx,sy,ox,oy,aan=false;k.addEventListener('pointerdown',function(e){if(!groot())return;aan=true;k.setPointerCapture(e.pointerId);k.style.zIndex=++z;sx=e.clientX;sy=e.clientY;ox=k.offsetLeft;oy=k.offsetTop});k.addEventListener('pointermove',function(e){if(!aan)return;k.style.left=ox+e.clientX-sx+'px';k.style.top=oy+e.clientY-sy+'px'});['pointerup','pointercancel'].forEach(function(n){k.addEventListener(n,function(){aan=false})})});
 })();
 </script>
+<script>if(matchMedia("(prefers-reduced-motion: reduce)").matches){var f=document.querySelector(".film video");if(f){f.removeAttribute("autoplay");f.pause()}}</script>
 </body>
 </html>
